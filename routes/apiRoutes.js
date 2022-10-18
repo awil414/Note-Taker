@@ -25,5 +25,9 @@ module.exports = (app) => {
             // Creating uuid
             id: uuid(),
         };
-    })
-}
+        // Pushing new note to db.JSON file
+        db.push(newNote);
+        fs.writeFile('db/db.json', JSON.stringify(db));
+        res.json(db);
+    });
+};
