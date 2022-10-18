@@ -6,13 +6,13 @@ const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 
 
     // GET api/notes reads the db.json file and returns saved notes as JSON
-    note.get('/', (req, res) => {
+    note.get('/notes', (req, res) => {
         readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
       });
 
 
     // POST Route for a new UX/UI db
-    note.post('/', (req, res) => {
+    note.post('/notes', (req, res) => {
         console.log(req.body);
   
         const { title, text } = req.body;
