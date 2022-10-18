@@ -1,5 +1,7 @@
 // Setting up dependencies
 const express = require('express');
+// const fs = require('fs');
+const path = require('path');
 
 // Setting up Express App
 const app = express();
@@ -7,11 +9,13 @@ const app = express();
 // Setting up port
 const PORT = process.env.PORT || 3001;
 
-// Setting up Express app to handle data parsing
+// Middleware -- setting up Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Setting up static path
+app.use(express.static('public'));
 
-// Routes
+// GET basic routes
 require('./routes/apiRoutes')(app);
 require('/routes/htmlRoutes')(app);
 
